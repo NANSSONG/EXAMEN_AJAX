@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <title>Update Football Scores</title>
+    <script src="scripts.js"></script>
+</head>
+<body>
+
+
+    <div class="container">
+        <h1>Scores des Matchs de Football du Championnat Béninois</h1>
+        
+        <div id="live-score">
+            <h2>Score en Direct</h2>
+            <div id="match-score">
+                <p>Home Team: <span id="home-team-score">-</span></p>
+                <p>Away Team: <span id="away-team-score">-</span></p>
+            </div>
+        </div>
+
+        <div id="all-matches">
+            <h2>Autres Matchs et Scores en Direct</h2>
+            <table id="matches-table">
+                <thead>
+                    <tr>
+                        <th>Match ID</th>
+                        <th>Équipe Domicile</th>
+                        <th>Équipe Extérieure</th>
+                        <th>Score Domicile</th>
+                        <th>Score Extérieure</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <h1>Update Football Scores</h1>
+                    <form id="scoreForm">
+                        <label for="matchId">Match ID:</label>
+                        <input type="text" id="matchId" name="matchId" required>
+                        <br>
+                        <label for="teamHomeScore">Home Team Score:</label>
+                        <input type="text" id="teamHomeScore" name="teamHomeScore" required>
+                        <br>
+                        <label for="teamAwayScore">Away Team Score:</label>
+                        <input type="text" id="teamAwayScore" name="teamAwayScore" required>
+                        <br>
+                        <button type="submit">Update Scores</button>
+                    </form>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<definitions 
+    name="FootballScoresService" 
+    targetNamespace="http://example.com/football"
+    xmlns:tns="http://example.com/football" 
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://example.com/football">
+            <xsd:element name="getMatchScoresRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="matchId" type="xsd:int"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="getMatchScoresResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="teamHomeScore" type="xsd:int"/>
+                        <xsd:element name="teamAwayScore" type="xsd:int"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="getMatchScoresRequest">
+        <wsdl:part name="parameters" element="tns:getMatchScoresRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getMatchScoresResponse">
+        <wsdl:part name="parameters" element="tns:getMatchScoresResponse"/>
+    </wsdl:message>
+
+    <wsdl:portType name="FootballScoresPortType">
+        <wsdl:operation name="getMatchScores">
+            <wsdl:input message="tns:getMatchScoresRequest"/>
+            <wsdl:output message="tns:getMatchScoresResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="FootballScoresBinding" type="tns:FootballScoresPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getMatchScores">
+            <soap:operation soapAction="http://example.com/football/getMatchScores"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="FootballScoresService">
+        <wsdl:port name="FootballScoresPort" binding="tns:FootballScoresBinding">
+            <soap:address location="http://localhost:81/ajax/footballScoresService.php"/>
+        </wsdl:port>
+    </wsdl:service>
+</definitions>
